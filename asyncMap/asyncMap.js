@@ -40,10 +40,4 @@
 
 
 var asyncMap = function(tasks, callback) {
-  return Promise.all(tasks.map(fn => {
-    return new Promise(resolve => {
-      fn(res => resolve(res));
-    });
-  }))
-  .then(res => callback(res));
 };

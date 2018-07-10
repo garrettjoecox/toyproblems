@@ -34,15 +34,7 @@
 'use strict';
 
 var compose = function() {
-	let queue = Array.prototype.slice.call(arguments);
-	return function(arg) {
-		return queue.reduceRight((previous, method) => method.call(null, previous), arg);
-	}
 };
 
 var pipe = function() {
-	let queue = Array.prototype.slice.call(arguments);
-	return function(arg) {
-		return queue.reduce((previous, method) => method.call(null, previous), arg);
-	}
 };

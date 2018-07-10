@@ -37,15 +37,5 @@
 
 
 var characterFrequency = function(string) {
-	let frequencies = {};
-	string.split('').forEach(char => frequencies.hasOwnProperty(char) ? frequencies[char]++ : frequencies[char] = 1);
-	return Object.keys(frequencies).map(char => [char, frequencies[char]]).sort((a, b) => {
-		if (a[1] < b[1]) return 1;
-		else if (a[1] > b[1]) return -1;
-		else {
-			if (a[0] < b[0]) return -1;
-			else if (a[0] > b[0]) return 1;
-			else return 0;
-		}
-	});
+
 };

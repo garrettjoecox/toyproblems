@@ -15,7 +15,7 @@ describe('mixEvents', function() {
   it('should exist', function(){
     should.exist(mixEvents);
   });
-  
+
   it('should be a function', function() {
     should.exist(mixEvents);
     mixEvents.should.be.a.Function;
@@ -87,7 +87,7 @@ describe('mixEvents', function() {
       }).should.not.throw();
     });
   });
-  
+
   describe('#on', function(){
     it('should pass any additional arguments in `trigger` to the listeners', function(){
       var dinner = mixEvents({});

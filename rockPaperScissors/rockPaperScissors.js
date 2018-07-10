@@ -17,25 +17,6 @@
 *
 */
 
-let possible = ['rock', 'paper', 'scissors'];
-
 var rockPaperScissors = function (rounds) {
-	rounds = rounds || 3;
-	let result = [];
 
-	function recurse(toGo, soFar) {
-		if (!toGo) {
-			result.push(soFar);
-		} else {
-
-			for (let p = 0; p < possible.length; p++) {
-				recurse(toGo - 1, soFar.concat(possible[p]));
-			}
-
-		}
-	}
-
-	recurse(rounds, []);
-
-	return result;
 };

@@ -38,8 +38,7 @@ var Tree = function(value){
 };
 
 Tree.prototype.countLeaves = function () {
-  if (!this.children.length) return 1;
-  else return this.children.reduce((acc, item) => acc+= item.countLeaves(), 0)
+
 }
 
 /**

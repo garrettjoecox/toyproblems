@@ -31,14 +31,14 @@ describe('powerSet', function () {
 
   it('should contain the original set', function(){
     // the power set of a set includes the original set!
-    powerSet('a').should.include('a');
+    powerSet('a').should.containEql('a');
   });
 
   it('should produce a set with the original set plus sub sets', function(){
     var result = powerSet('ab'); // the power set of `ab`
-    result.should.include('ab'); // the original set
-    result.should.include('a');  // sub set
-    result.should.include('b');  // sub set
+    result.should.containEql('ab'); // the original set
+    result.should.containEql('a');  // sub set
+    result.should.containEql('b');  // sub set
   });
 
   it('should work for sets of length 3', function(){
@@ -58,11 +58,11 @@ describe('powerSet', function () {
       result[i] = sortSet(result[i]);
     }
     // should include all the original characters
-    result.should.include('f').and.include('u').and.include('n');
+    result.should.containEql('f').and.include('u').and.include('n');
     // should include all sub sets of length 2
-    result.should.include('fu').and.include('nu').and.include('fn');
+    result.should.containEql('fu').and.include('nu').and.include('fn');
     // should include the original set
-    result.should.include(sortSet('fun'));
+    result.should.containEql(sortSet('fun'));
   });
 
   it('should contain the original set for larger sets', function(){
@@ -77,24 +77,24 @@ describe('powerSet', function () {
       result[i] = sortSet(result[i]);
     }
     // should include all sub sets of length 1 (aka, all the original characters)
-    result.should.include('j')
-    result.should.include('u')
-    result.should.include('m')
-    result.should.include('p');
+    result.should.containEql('j')
+    result.should.containEql('u')
+    result.should.containEql('m')
+    result.should.containEql('p');
     // should include all sub sets of length 2
-    result.should.include(sortSet('ju'))
-    result.should.include(sortSet('jm'))
-    result.should.include(sortSet('jp'))
-    result.should.include(sortSet('um'))
-    result.should.include(sortSet('up'))
-    result.should.include(sortSet('mp'));
+    result.should.containEql(sortSet('ju'))
+    result.should.containEql(sortSet('jm'))
+    result.should.containEql(sortSet('jp'))
+    result.should.containEql(sortSet('um'))
+    result.should.containEql(sortSet('up'))
+    result.should.containEql(sortSet('mp'));
     // should include all sub sets of length 3
-    result.should.include(sortSet('jum'))
-    result.should.include(sortSet('jup'))
-    result.should.include(sortSet('jmp'))
-    result.should.include(sortSet('ump'))
+    result.should.containEql(sortSet('jum'))
+    result.should.containEql(sortSet('jup'))
+    result.should.containEql(sortSet('jmp'))
+    result.should.containEql(sortSet('ump'))
     // should include the original set
-    result.should.include(sortSet('jump'))
+    result.should.containEql(sortSet('jump'))
   });
 
   it('should not include duplicate sets', function(){
@@ -137,13 +137,13 @@ describe('powerSet', function () {
     for(var i = 0; i < result.length; i++){
       result[i] = sortSet(result[i]);
     }
-    result.should.not.include('aa');
-    result.should.not.include('aaa');
-    result.should.not.include('bb');
-    result.should.not.include('bbb');
-    result.should.include('a');
-    result.should.include('b');
-    result.should.include('ab');
+    result.should.not.containEql('aa');
+    result.should.not.containEql('aaa');
+    result.should.not.containEql('bb');
+    result.should.not.containEql('bbb');
+    result.should.containEql('a');
+    result.should.containEql('b');
+    result.should.containEql('ab');
   });
 
   it('should include the empty set', function(){
@@ -155,6 +155,6 @@ describe('powerSet', function () {
     // > "In mathematics, the power set (or powerset) of any set S, [...] is
     // > the set of all subsets of S, including the empty set and S itself."
     // > -- http://en.wikipedia.org/wiki/Power_set
-    powerSet('lame').should.include('');
+    powerSet('lame').should.containEql('');
   });
 });

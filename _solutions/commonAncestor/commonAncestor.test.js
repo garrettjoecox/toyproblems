@@ -2,16 +2,14 @@ var should = require('should');
 var vm = require('vm');
 var fs = require('fs');
 
-// if this test is being run on a server it should be ONLY to test the
-// provided solutions
-if(typeof window === 'undefined'){
-  // looks for a file with the same name as this one but with
-  // `.test.js` replaced with `.js`
-  var filename = __filename.replace(/\.test\.js$/, '.js');
-  vm.runInThisContext(fs.readFileSync(filename), filename);
-}
-
 describe('Tree', function(){
+  before(function () {
+    if(typeof window === 'undefined'){
+      var filename = __filename.replace(/\.test\.js$/, '.js');
+      vm.runInThisContext(fs.readFileSync(filename), filename);
+    }
+  });
+
   it('should exist', function(){
     should.exist(Tree);
   });
@@ -35,7 +33,7 @@ describe('Tree', function(){
       var tree = new Tree();
       var child = new Tree();
       tree.addChild(child);
-      tree.children.should.include(child);
+      tree.children.should.containEql(child);
     });
     it('should work for childrens children', function(){
       var grandma = new Tree();
@@ -43,8 +41,8 @@ describe('Tree', function(){
       var me = new Tree();
       grandma.addChild(mom);
       mom.addChild(me);
-      grandma.children.should.include(mom);
-      mom.children.should.include(me);
+      grandma.children.should.containEql(mom);
+      mom.children.should.containEql(me);
     });
   });
   describe('#isDescendant', function(){
@@ -78,7 +76,7 @@ describe('Tree', function(){
       var child = new Tree();
       tree.addChild(child);
       tree.removeChild(child);
-      tree.children.should.not.include(child);
+      tree.children.should.not.containEql(child);
     })
   });
   describe('#getAncestorPath', function(){

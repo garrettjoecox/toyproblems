@@ -1,18 +1,17 @@
 Toy Problems
 ============
-- [x] rockPaperScissors
-- [x] evenOccurence
-- [x] treeCountLeaves
+- [ ] rockPaperScissors
+- [ ] evenOccurence
+- [ ] treeCountLeaves
 - [ ] primeTester
 - [ ] insertionSort
-- [x] characterFrequency
-- [x] treeMap
-- [x] sumArray
+- [ ] characterFrequency
+- [ ] treeMap
+- [ ] sumArray
 - [ ] numberToEnglish
 - [ ] telephoneWords
 - [ ] functionBind
 - [ ] coinSums
-- [ ] jsonpFetcher
 - [ ] eventingLibrary
 - [ ] hashTableResizing
 - [ ] linkedListCycles
@@ -28,10 +27,10 @@ Toy Problems
 - [ ] linkedList
 - [ ] tree
 - [ ] hashTable
-- [x] queueStack
+- [ ] queueStack
 - [ ] robotPaths
 - [ ] rockPaperScissors
-- [x] nonrepeatedCharacter
+- [ ] nonrepeatedCharacter
 - [ ] isSubsetOf
 - [ ] nthFibonacci
 - [ ] bubbleSort
@@ -39,10 +38,9 @@ Toy Problems
 - [ ] treeDFSelect
 - [ ] largestProductOfThree
 - [ ] deepEquality
-- [ ] htmljQueryColor
 - [ ] powerSet
 - [ ] treeBFSelect
-- [x] composePipe
+- [ ] composePipe
 - [ ] binarySearchArray
 - [ ] rangeClass
 - [ ] balancedParens
@@ -52,5 +50,3 @@ Toy Problems
 - [ ] fractionConverter
 - [ ] rotateMatrix
 - [ ] shuffleDeck
-
-

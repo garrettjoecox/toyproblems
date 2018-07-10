@@ -11,12 +11,4 @@
 
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
-  var largest = Number.NEGATIVE_INFINITY;
-  var current = 0;
-  array.forEach(item => {
-    current+= item;
-    if (current > largest) largest = current;
-    if (current < 0) current = 0;
-  });
-  return largest;
 };

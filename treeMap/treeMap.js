@@ -44,17 +44,10 @@ var Tree = function(value){
 };
 
 Tree.prototype.map = function (callback) {
-  let newTree = new Tree(callback(this.value));
-  if (this.children.length) {
-    this.children.forEach(child => newTree.addChild(child.map(callback)));
-  }
-  return newTree;
 };
 
 
 Tree.prototype.mapInPlace = function (callback) {
-  this.value = callback(this.value);
-  if (this.children.length) this.children.forEach(child => child.mapInPlace(callback));
 };
 
 /**

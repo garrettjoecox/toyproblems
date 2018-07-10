@@ -25,14 +25,14 @@ describe('telephoneWords', function() {
   });
   it('should return one permutation for 0001', function () {
     telephoneWords('0001').should.have.length(1);
-    telephoneWords('0001').should.include('0001');
+    telephoneWords('0001').should.containEql('0001');
   });
   it('should return three permutations for 0002', function () {
     var answer = ['000A','000B','000C'];
     var result = telephoneWords('0002');
     result.should.have.length(answer.length);
     for (var i = 0; i < answer.length; i++) {
-      result.should.include(answer[i]);
+      result.should.containEql(answer[i]);
     }
   });
   it('should return nine permutations for 1123', function () {
@@ -40,7 +40,7 @@ describe('telephoneWords', function() {
     var result = telephoneWords('1123');
     result.should.have.length(answer.length);
     for (var i = 0; i < answer.length; i++) {
-      result.should.include(answer[i]);
+      result.should.containEql(answer[i]);
     }
   });
   it('should return 27 permutations for 1234', function () {
@@ -48,7 +48,7 @@ describe('telephoneWords', function() {
     var result = telephoneWords('1234');
     result.should.have.length(answer.length);
     for (var i = 0; i < answer.length; i++) {
-      result.should.include(answer[i]);
+      result.should.containEql(answer[i]);
     }
   });
   it('should return 144 permutations for 5987', function () {
@@ -58,7 +58,7 @@ describe('telephoneWords', function() {
     var result = telephoneWords('5987');
     result.should.have.length(answer.length);
     for (var i = 0; i < answer.length; i++) {
-      result.should.include(answer[i]);
+      result.should.containEql(answer[i]);
     }
   });
 });

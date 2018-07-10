@@ -46,20 +46,6 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array, comparator) {
-	comparator = comparator || function(a,b) { return a < b ? -1 : 0 };
-
-	for (let i = 0; i < array.length; i++) {
-		let item = array[i];
-		let hole = i;
-
-		while(hole > 0 && comparator(item.value, array[hole-1].value) === -1) {
-			array[hole] = array[hole-1]
-			hole-= 1;
-		}
-
-		array[hole] = item;
-	}
-
+var insertionSort = function(array) {
   return array;
 };

@@ -29,11 +29,11 @@ describe('sumArray()', function(){
   function generateTest(arr, seq, sum){
     // the students will see the contents of the test if they fail the test
     function test(){
-      // the _contiguous_ sub-subsequence with the largest sum of `__arr__` 
+      // the _contiguous_ sub-subsequence with the largest sum of `__arr__`
       // is `__seq__` and its sum is `__sum__`.
       sumArray(__arr__).should.equal(__sum__);
     }
-    // overwrite `__arr__`, `__seq__`, and `__sum__` in `test()` with the values of `arr`, 
+    // overwrite `__arr__`, `__seq__`, and `__sum__` in `test()` with the values of `arr`,
     // `seq`, `sum`.
     eval(test.toString()
       .replace(/__arr__/g, JSON.stringify(arr))

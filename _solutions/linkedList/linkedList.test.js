@@ -1,5 +1,6 @@
 var fs = require('fs');
 var should = require('should');
+var vm = require('vm');
 
 // if this test is being run on a server it should be ONLY to test the
 // provided solutions

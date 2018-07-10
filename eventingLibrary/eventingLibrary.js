@@ -21,14 +21,5 @@
  */
 
 var mixEvents = function(obj) {
-  var events = {};
-  obj.on = function(tag, fn) {
-    events[tag] = events[tag] || [];
-    events[tag].push(fn);
-  };
-  obj.trigger = function(tag) {
-    var args = Array.prototype.slice.call(arguments, 1);
-    events[tag] && events[tag].forEach(fn => fn.apply(null, args));
-  };
   return obj;
 };
