@@ -1,7 +1,7 @@
 Toy Problems
 ============
 - [ ] rockPaperScissors
-- [x] evenOccurence
+- [ ] evenOccurence
 - [ ] treeCountLeaves
 - [ ] primeTester
 - [ ] insertionSort
@@ -16,7 +16,6 @@ Toy Problems
 - [ ] hashTableResizing
 - [ ] linkedListCycles
 - [ ] allAnagrams
-- [ ] sortableTable
 - [ ] longestPalindrome
 - [ ] lruCache
 - [ ] implementingOperators
@@ -34,7 +33,7 @@ Toy Problems
 - [ ] isSubsetOf
 - [ ] nthFibonacci
 - [ ] bubbleSort
-- [x] commonCharacters
+- [ ] commonCharacters
 - [ ] treeDFSelect
 - [ ] largestProductOfThree
 - [ ] deepEquality
@@ -43,7 +42,7 @@ Toy Problems
 - [ ] composePipe
 - [ ] binarySearchArray
 - [ ] rangeClass
-- [x] balancedParens
+- [ ] balancedParens
 - [ ] asyncMap
 - [ ] longestRun
 - [ ] mergeSort

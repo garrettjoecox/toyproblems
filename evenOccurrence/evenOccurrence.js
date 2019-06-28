@@ -11,13 +11,5 @@
 */
 
 var evenOccurrence = function(array) {
-  const amounts = {};
-  array.forEach(n => {
-    amounts[n] = amounts[n] ? amounts[n] + 1 : 1;
-  });
-
-  return array.reduce((first, n) => {
-    if (first) return first;
-    return amounts[n] % 2 ? null : n;
-  }, null);
+  // Your code here.
 };
