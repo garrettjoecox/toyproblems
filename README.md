@@ -1,5 +1,11 @@
-Toy Problems
-============
+# Toy Problems
+
+Test your solution with `npm run test {problemName}`, or test all solutions with `npm run test:all`
+
+There are provided solutions in the `solutions` branch.
+
+## Checklist
+
 - [ ] rockPaperScissors
 - [ ] evenOccurence
 - [ ] treeCountLeaves
