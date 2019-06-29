@@ -12,22 +12,17 @@ var makeHashTable = function(){
   var storage = [];
   var storageLimit = 4;
   var size = 0;
-  result.insert = function(/*...*/ 
-){
+  result.insert = function(){
     // TODO: implement `insert`
   };
 
-  result.retrieve = function(/*...*/ 
-){
+  result.retrieve = function(){
     // TODO: implement `retrieve`
   };
 
-  result.remove = function(/*...*/ 
-){
+  result.remove = function(){
     // TODO: implement `remove`
   };
-
-  }
 
   return result;
 };
