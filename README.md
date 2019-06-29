@@ -10,7 +10,6 @@ Toy Problems
 - [ ] sumArray
 - [ ] numberToEnglish
 - [ ] telephoneWords
-- [ ] functionBind
 - [ ] coinSums
 - [ ] eventingLibrary
 - [ ] hashTableResizing

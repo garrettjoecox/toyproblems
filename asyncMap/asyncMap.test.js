@@ -29,7 +29,7 @@ describe('asyncMap', function() {
     asyncMap.length.should.equal(2);
   });
 
-  it('should pass the completed tasks to its callback', function(){
+  it('should pass the completed tasks to its callback', function(done){
 
     // These functions aren't really asynchronous, but for the purposes of testing it works.
     function wait2For2(callback){
@@ -57,7 +57,7 @@ describe('asyncMap', function() {
 
   });
 
-  it('should pass the completed tasks to its callback in the correct order', function(){
+  it('should pass the completed tasks to its callback in the correct order', function(done){
 
     function wait2For2(callback){
       setTimeout(function(){
@@ -80,7 +80,7 @@ describe('asyncMap', function() {
 
   });
 
-  it('should handle more than two async functions in the correct order', function(){
+  it('should handle more than two async functions in the correct order', function(done){
     function wait2For2(callback){
       setTimeout(function(){
         callback(2);
