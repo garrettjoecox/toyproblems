@@ -38,7 +38,19 @@ var Tree = function(value){
 };
 
 Tree.prototype.countLeaves = function () {
-
+  // TODO: implement me!
+  /* START SOLUTION */
+  var leaves;
+  if (this.children.length === 0) {
+    leaves = 1;
+  } else {
+    leaves = 0;
+    for (var i = 0; i < this.children.length; i++) {
+      leaves += this.children[i].countLeaves();
+    }
+  }
+  return leaves;
+  /* END SOLUTION */
 }
 
 /**

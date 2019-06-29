@@ -22,7 +22,22 @@
 
 var nthFibonacci = function (n) {
   // TODO: implement me!
+  /* START SOLUTION */
+  // fast solution
+  var fibs = [0, 1];
+  for(; n > 1; n--) {
+    fibs.push(fibs.shift() + fibs[0]);
+  }
+  return fibs[n];
+  /* END SOLUTION */
 };
 
 
-
+/* START SOLUTION */
+// solow, recusrive (exponential time complexity) solution
+// uncomment to make sure the tests fail for this case
+// var nthFibonacci = function(n) {
+//   // Your code here
+//   return n < 2 ? n : nthFibonacci(n-1) + nthFibonacci(n-2);
+// };
+/* END SOLUTION */

@@ -10,6 +10,16 @@ var primeTester = function(n) {
     return false;
   }
   // TODO: return true if n is prime, false otherwise
+  /* START SOLUTION */
+  var upperLimit = Math.sqrt(Math.abs(n));
+  if(n === 1) return false; // `1` is not prime
+  for (var i = 2; i <= upperLimit; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+  /* END SOLUTION */
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers
@@ -19,6 +29,32 @@ var primeTester = function(n) {
  */
 
 var primeSieve = function (start, end) {
+  /* START SOLUTION */
+  var current = 2; var primes = range(0, end + 1);
+  // While we haven't found all the primes.
+  while (current < end) {
+    // mark all multiples of current as not prime
+    for (var i = current + current; i <= end; i += current) {
+      // null means not prime, a number means prime
+      primes[i] = null;
+    }
+    // find the next current
+    do {
+      // Advance current at least once
+      current += 1;
+    // Then continue to advance it until we hit a prime number or we are out of
+    // range.
+    } while (!primes[current] && current <= end);
+  }
+  // Filter out all values that aren't prime and aren't in our range
+  return primes.slice(2).filter(function (val) { return val && val >= start; });
+  /* END SOLUTION */
 };
 
-
+/* START SOLUTION */
+var range = function (start, end) {
+  var result = [];
+  for (var i = start; i < end; i++) { result.push(i); }
+  return result;
+};
+/* END SOLUTION */

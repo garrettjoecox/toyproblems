@@ -38,9 +38,27 @@ Tree.prototype.addChild = function(child){
   *  3.) between my grandma and my grandma -> my grandma
   *  4.) between me and a potato -> null
   */
-Tree.prototype.getClosestCommonAncestor = function(/*...*/
-){
+Tree.prototype.getClosestCommonAncestor = function(/*...*//* START SOLUTION */ child1, child2 /* END SOLUTION */){
   // TODO: implement me!
+  /* START SOLUTION */
+  var path1 = this.getAncestorPath(child1);
+  if(!path1) {
+    return null;
+  }
+
+  var path2 = this.getAncestorPath(child2);
+  if(!path2){
+    return null;
+  }
+  var len = Math.min(path1.length, path2.length);
+  var closestAncestor = this;
+  for(var i = 0; i < len; i++){
+    if(path1[i] === path2[i]){
+      closestAncestor = path1[i];
+    }
+  }
+  return closestAncestor;
+  /* END SOLUTION */
 }
 
 /**
@@ -51,9 +69,25 @@ Tree.prototype.getClosestCommonAncestor = function(/*...*/
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-){
+Tree.prototype.getAncestorPath = function(/*...*//* START SOLUTION */ child, ancestors /* END SOLUTION */){
   // TODO: implement me!
+  /* START SOLUTION */
+  ancestors = ancestors || [];
+  if(this === child) {
+    // I'm the grandchild!
+    ancestors.unshift(this);
+    return ancestors;
+  }
+
+  for(var i = 0; i < this.children.length; i++){
+    if(this.children[i].getAncestorPath(child, ancestors)){
+      // one of my children contains the grandchild. add me to the list.
+      ancestors.unshift(this);
+      return ancestors;
+    }
+  }
+  return null;
+  /* END SOLUTION */
 }
 
 /**

@@ -12,17 +12,97 @@ var makeHashTable = function(){
   var storage = [];
   var storageLimit = 4;
   var size = 0;
-  result.insert = function(){
+  result.insert = function(/*...*/ /* START SOLUTION */ key, value /* END SOLUTION */){
     // TODO: implement `insert`
+    /* START SOLUTION */
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    storage[index] = storage[index] || [];
+    var pairs = storage[index];
+    var pair;
+    var replaced = false;
+    for (var i = 0; i < pairs.length; i++) {
+      pair = pairs[i];
+      if (pair[0] === key) {
+        pair[1] = value;
+        replaced = true;
+      }
+    }
+
+    if (!replaced) {
+      pairs.push([key, value]);
+      size++;
+    }
+    if(size >= storageLimit * 0.75){
+      // increase the size of the hash table
+      resize(storageLimit * 2);
+    }
+    /* END SOLUTION */
   };
 
-  result.retrieve = function(){
+  result.retrieve = function(/*...*/ /* START SOLUTION */ key /* END SOLUTION */){
     // TODO: implement `retrieve`
+    /* START SOLUTION */
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var pairs = storage[index];
+    if (!pairs) { return; }
+    var pair;
+
+    for (var i = 0; i < pairs.length; i++) {
+      pair = pairs[i];
+      if (pair && pair[0] === key) {
+        return pair[1];
+      }
+    }
+    /* END SOLUTION */
   };
 
-  result.remove = function(){
+  result.remove = function(/*...*/ /* START SOLUTION */ key /* END SOLUTION */){
     // TODO: implement `remove`
+    /* START SOLUTION */
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var pairs = storage[index];
+    var pair;
+
+    for (var i = 0; i < pairs.length; i++) {
+      pair = pairs[i];
+      if (pair[0] === key) {
+        var value = pair[1];
+        delete pairs[i];
+        size--;
+        if(size <= storageLimit * 0.25){
+          // decrease the size of the hash table
+          resize(storageLimit / 2);
+        }
+        return value;
+      }
+    }
+    /* END SOLUTION */
   };
+
+  /* START SOLUTION */
+  var resizing = false;
+  function resize(newSize){
+    // collect all the pairs
+    if(!resizing){
+      resizing = true;
+      var pairs = [];
+      for(var i = 0; i < storage.length; i++){
+        if(!storage[i]) continue;
+        for(var j = 0; j < storage[i].length; j++){
+          if(!storage[i][j]) continue;
+          pairs.push(storage[i][j]);
+        }
+      }
+      storageLimit = newSize;
+      storage = [];
+      size = 0;
+      for(var i = 0; i < pairs.length; i++){
+        result.insert(pairs[i][0], pairs[i][1]);
+      }
+      resizing = false;
+    }
+    /* END SOLUTION */
+  }
 
   return result;
 };

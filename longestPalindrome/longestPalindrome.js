@@ -7,17 +7,33 @@
 */
 
 var longestPalindrome = function (string) {
-  var longest = '';
+ /* START SOLUTION */
   var length = string.length;
-  for (var oi = 0; oi < length; oi++) {
-    for (var ii = oi + 2; ii < length + 1; ii++) {
-      var p = string.substring(oi, ii);
-      if (p === p.split('').reverse().join('')) {
-        if (p.length > longest.length) longest = p;
-      }
-    }
-  }
-  return longest;
-};
+  var result = "";
 
-console.log(longestPalindrome('My dad is a racecar athlete'));
+  // Given starting center indices,
+  // find the longest centered palindrome
+  var centeredPalindrome = function(left, right) {
+    while (left >= 0 && right < length
+           && string[left] === string[right]) {
+      left--;
+      right++;
+    }
+
+    return string.slice(left+1, right);
+  };
+
+  // Loop through the whole string,
+  // checking for palindromes
+    for (var i = 0; i < length; i++) {
+      var oddPal = centeredPalindrome(i - 1, i + 1);
+      var evenPal = centeredPalindrome(i, i + 1);
+
+     if (oddPal.length > result.length)
+       result = oddPal;
+     if (evenPal.length > result.length)
+       result = evenPal;
+    }
+  return result;
+ /* END SOLUTION */
+};

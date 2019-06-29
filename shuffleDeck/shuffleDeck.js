@@ -32,7 +32,26 @@
  */
 
 var shuffleDeck = function(deck) {
+  /* START SOLUTION */
+  // Constant space (in-place) solution
+  var swap = function (a,b) {
+    var temp = deck[a];
+    deck[a] = deck[b];
+    deck[b] = temp;
+  }
+  // we shuffle into the front of the array
+  // i is the first index of the un-shuffled portion
+  for (var i = 0; i < deck.length; i++) {
+    // select a random card from the un-shuffled portion
+    var pick = i + Math.floor(Math.random() * (deck.length - i));
+    // swap that card with the first un-shuffled card
+    swap(i, pick);
+    // since the pick is selected randomly each time, the swap is not biasing
+  }
+  return deck;
+  /* ELSE
   // Your code here
+  END SOLUTION */
 };
 
 // Ordered deck generator provided for your testing convenience

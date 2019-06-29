@@ -55,4 +55,62 @@ var numbersToPlace = {
 
 Number.prototype.toEnglish = function () {
   // return my value as english words
+  /* START SOLUTION */
+  var number = this.valueOf();
+  var place, numberInPlace, numberLeft;
+  var decimalPart;
+  var output, restOfString, decimalString;
+  // separate decimal part for later
+  if (number % 1 !== 0) {
+    decimalPart = number % 1;
+    number = Math.floor(number);
+  }
+  if (numbersToWords[number]) {
+    // numbers less than 20 or divisible by 10 are unique(ish) and predefined
+    output = numbersToWords[number];
+  } else if (number < 100) {
+    // numbers less than 100 are a multiple of 10 and a single digit, hyphenated
+    numberInPlace = Math.floor(number / 10);
+    numberLeft = number % 10;
+    output = numbersToWords[numberInPlace * 10] +'-'+ (numberLeft).toEnglish();
+  } else {
+    // all other numbers are a combination of a number we can write, and a place name
+    if (number < 1000) {
+      // the hundreds place is special
+      place = 100;
+    } else {
+      // all other places are a multiple of 1000
+      place = 1000;
+      while (place * 1000 <= number) {
+        place *= 1000;
+      }
+    }
+    numberInPlace = Math.floor(number / place);
+    numberLeft = number % place;
+    // assemble this 1000s place
+    output = numberInPlace.toEnglish() +' '+ numbersToPlace[place];
+    // assemble the rest of the number
+    restOfString = (numberLeft).toEnglish();
+    if (restOfString !== 'zero') {
+      output += ' ' + restOfString;
+    }
+  }
+  // decimals are a combination of the base number, and a division by 10 place name
+  if (decimalPart) {
+    place = 1;
+    do {
+      place *= 10;
+      decimalPart *= 10;
+    } while (Math.floor(decimalPart) !== decimalPart);
+    var pluralize = decimalPart === 1 ? '' : 's';
+    // decimal place names are the same as number names, but hyphenated and ignoring "one"
+    decimalString = decimalPart.toEnglish() +' '+ place.toEnglish().replace('one ', '').replace(/ /, '-') + 'th' + pluralize;
+    if (output == 'zero') {
+      output = decimalString;
+    } else {
+      output += ' and ' + decimalString;
+    }
+  }
+  return output;
+  /* END SOLUTION */
 };

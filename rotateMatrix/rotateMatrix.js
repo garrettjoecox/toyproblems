@@ -43,7 +43,24 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
+var rotateMatrix = function(matrix/* START SOLUTION */, direction /* END SOLUTION */) {
   // Your code here.
+  /* START SOLUTION */
+  direction = direction || 1;
+  var m = matrix.length,
+    n = (matrix[0] && matrix[0].length);
+  var output = [];
+  // We iterate with i,j in output order to transparently support rectangular arrays
+  for (var i = 0; i < n; i++) {
+    output[i] = [];
+    for (var j = 0; j < m; j++) {
+      if (direction > 0) { // rotate clockwise
+        output[i][j] = matrix[m-j-1][i];
+      } else if (direction < 0) { // rotate counterclockwise
+        output[i][j] = matrix[j][n-i-1];
+      }
+    }
+  }
+  return output;
+  /* END SOLUTION */
 };

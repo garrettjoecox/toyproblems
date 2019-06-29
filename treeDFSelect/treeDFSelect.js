@@ -36,9 +36,39 @@ var Tree = function(value){
 };
 
 Tree.prototype.DFSelect = function(filter) {
+  /* START SOLUTION */
+  var results = [];
+  var subroutine = function(node,depth) {
+    if (filter(node.value, depth)) {
+      array.push(node.value);
+    }
+    for (var i = 0; i < node.children.length; i++) {
+      var child = node.children[i];
+      subroutine(child,depth+1);
+    }
+  };
+  subroutine(this,0);
+  return array;
+  /* END SOLUTION */
 };
 
+/* START SOLUTION */
+// solution without a subroutine, for the badasses among us
+Tree.prototype.DFSelect = function(filter,depth,results) {
+  results = results || [];
+  depth = depth || 0;
 
+  if (filter(this.value,depth)) {
+    results.push(this.value);
+  }
+
+  for (var i = 0; i < this.children.length; i++) {
+    var child = this.children[i];
+    child.DFSelect(filter,depth+1,results);
+  }
+  return results;
+};
+/* END SOLUTION */
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.

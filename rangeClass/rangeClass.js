@@ -40,15 +40,54 @@
 
 
 var Range = function(start, end, step) {
+  /* START SOLUTION */
+  if (start === undefined) {
+    return null;
+  }
+
+  this.start = start;
+
+  if (end === undefined) {
+    this.end = this.start;
+  } else {
+    this.end = end;
+  }
+
+  if (step === undefined) {
+    this.step = (this.start < this.end) ? 1 : -1;
+  } else {
+    this.step = step;
+  }
+
+  return this;
+  /* END SOLUTION */
 };
 
-Range.prototype.size = function() {
+Range.prototype.size = function () {
+  /* START SOLUTION */
+  return Math.floor((this.end - this.start) / this.step) + 1;
+  /* END SOLUTION */
 };
 
 Range.prototype.each = function (callback) {
+  /* START SOLUTION */
+  if (this.step > 0) {
+    for (var i = this.start; i <= this.end; i += this.step) {
+      callback(i);
+    }
+  } else {
+    for (var i = this.start; i >= this.end; i += this.step) {
+      callback(i);
+    }
+  }
+  /* END SOLUTION */
 };
 
 Range.prototype.includes = function (val) {
+  /* START SOLUTION */
+  return ((val >= this.start) && (val <= this.end) && (((this.start - val) % this.step) == 0));
+  /* END SOLUTION */
 };
 
 var range = new Range(1);
+

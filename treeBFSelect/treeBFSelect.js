@@ -35,10 +35,41 @@ var Tree = function(value){
   this.children = [];
 };
 
+/* START SOLUTION */
+var Queue = function() {
+  var storage = [];
 
+  this.push = function(item) {
+    storage.push(item);
+  };
+
+  this.pop = function() {
+    return storage.shift();
+  };
+};
+/* END SOLUTION */
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  /* START SOLUTION */
+  var queue = new Queue();
+  var results = [];
+  queue.push({tree: this, depth: 0});
+
+  while (item = queue.pop()) {
+    tree = item.tree;
+    depth = item.depth;
+    if (filter(tree.value, depth)) {
+      results.push(tree.value);
+    }
+    for (var i = 0; i < tree.children.length; i++) {
+      child = tree.children[i];
+      queue.push({tree: child, depth: depth + 1});
+    }
+  }
+
+  return results;
+  /* END SOLUTION */
 };
 
 /**

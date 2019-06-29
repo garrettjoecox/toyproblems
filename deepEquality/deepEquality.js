@@ -12,4 +12,17 @@
   *
   */
 var deepEquals = function(apple, orange){
+  /* START SOLUTION */
+  if(apple === orange) { return true; }
+  if(apple && !orange || !apple && orange) { return false; }
+  if(!(apple instanceof Object) || !(orange instanceof Object)) { return false; }
+  var appleKeys = Object.keys(apple);
+  var orangeKeys = Object.keys(orange);
+  if(appleKeys.length !== orangeKeys.length) { return false; }
+  if(appleKeys.length === 0) { return true; } // two empty objects are equal
+  for(var i = 0; i < appleKeys.length; i++){
+    if(!deepEquals(apple[appleKeys[i]], orange[appleKeys[i]])) { return false; }
+  }
+  return true;
+  /* END SOLUTION */
 };

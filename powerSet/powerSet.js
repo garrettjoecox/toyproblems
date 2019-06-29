@@ -18,4 +18,41 @@
  */
 
 var powerSet = function(str){
+  /* START SOLUTION */
+  var set = [];
+  var hash = {};
+  if(!str) str = '';
+  str = str.split('').sort();
+
+  // remove duplicates
+  for(var i = 1; i < str.length; i++){
+    if(str[i - 1] === str[i]){
+      str.splice(i, 1);
+      i--;
+    }
+  }
+
+  // recursive through the sub sets
+  function recurse(strSet){
+    var joined = strSet.join('');
+
+    // check if we have visited this combo
+    if(hash[joined]) return;
+    hash[joined] = true;
+    set.push(joined);
+
+    // don't recurse to empty set - add it once at the end
+    if(strSet.length === 1) return;
+
+    // recurse all subsets
+    for(var i = 0; i < strSet.length; i++) {
+      var subSet = strSet.slice(0, i).concat(strSet.slice(i + 1));
+      recurse(subSet);
+    }
+  }
+  recurse(str);
+  set.push(''); // the power set, by definition, includes the empty set
+
+  return set;
+  /* END SOLUTION */
 }
