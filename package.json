@@ -4,7 +4,8 @@
   "description": "Toy Problems",
   "main": "index.js",
   "scripts": {
-    "test": "mocha */*.test.js"
+    "test": "mocha",
+    "test:all": "mocha */*.test.js"
   },
   "repository": {
     "type": "git",
